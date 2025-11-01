@@ -1,0 +1,25 @@
+{
+  "name": "first_mern_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgkgayani/First_mern_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wgkgayani/First_mern_project/issues"
+  },
+  "homepage": "https://github.com/wgkgayani/First_mern_project#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
