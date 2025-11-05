@@ -1,15 +1,39 @@
 import express from "express";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+
 const app = express();
+
+app.use(bodyParser.json());
+
+mongoose
+  .connect(
+    //connect to mongoose
+    "mongodb+srv://Admin:123@cluster0.vc3paai.mongodb.net/?appName=Cluster0"
+  )
+  .then(() => {
+    console.log("Connected to MongoDB"); // if correctly connect db print this
+  })
+  .catch(() => {
+    console.log("Error connecting to MongoDB"); // if error in connecting db print this
+  });
+
 //
 //
-app.get("/", (req, res) => {
+/*app.get("/", (req, res) => {
   res.json(
     // to send response for get request
     {
-      message: "this is get request",
-    }
+     message: "this is get request",
+   }
   );
+});*/
+
+app.get("/", (req, res) => {
+  console.log(req.body.name);
 });
+
+//mongodb+srv://Admin:123@cluster0.vc3paai.mongodb.net/?appName=Cluster0
 
 app.delete("/", (req, res) => {
   res.json(
@@ -21,12 +45,26 @@ app.delete("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  res.json(
-    // to send response for post request
-    {
-      message: "this is post request",
-    }
-  );
+  console.log(req.body);
+
+  //student schema
+  const studentSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+    grade: String,
+    email: String,
+  });
+  //create student model
+  // student = collection name
+  // studentSchema = schema name
+  const Student = mongoose.model("student", studentSchema); //to connect to student collection
+
+  const student = new Student({
+    name: req.body.name,
+    age: req.body.age,
+    grade: req.body.grade,
+    email: req.body.email,
+  });
 });
 
 app.put("/", (req, res) => {
