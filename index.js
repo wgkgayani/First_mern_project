@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import Student from "./models/students.js";
+import Student from "./models/student.js";
 
 const app = express();
 
@@ -33,7 +33,10 @@ mongoose
 });*/
 
 app.get("/", (req, res) => {
-  console.log(req.body.name);
+  Student.find() //to get all student data from mongodb
+    .then((data) => {
+      res.json(data);
+    });
 });
 
 //mongodb+srv://Admin:123@cluster0.vc3paai.mongodb.net/?appName=Cluster0
