@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
+import Student from "./models/students.js";
 
 const app = express();
 
@@ -18,6 +19,8 @@ mongoose
     console.log("Error connecting to MongoDB"); // if error in connecting db print this
   });
 
+//
+//
 //
 //
 /*app.get("/", (req, res) => {
@@ -48,7 +51,7 @@ app.post("/", (req, res) => {
   console.log(req.body);
 
   //student schema
-  const studentSchema = new mongoose.Schema({
+  /*const studentSchema = new mongoose.Schema({
     name: String,
     age: Number,
     grade: String,
@@ -57,14 +60,29 @@ app.post("/", (req, res) => {
   //create student model
   // student = collection name
   // studentSchema = schema name
-  const Student = mongoose.model("student", studentSchema); //to connect to student collection
+  const Student = mongoose.model("students", studentSchema);*/
+  //to connect to student collection
 
   const student = new Student({
     name: req.body.name,
     age: req.body.age,
-    grade: req.body.grade,
+    marks: req.body.marks,
     email: req.body.email,
   });
+
+  student //to save student data in mongodb
+    .save()
+    .then(() => {
+      res.json({
+        message: "Student data saved successfully",
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: "Error saving student data",
+        error: error,
+      });
+    });
 });
 
 app.put("/", (req, res) => {
@@ -76,6 +94,8 @@ app.put("/", (req, res) => {
   );
 });
 
+//
+//
 //
 //
 
