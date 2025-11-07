@@ -1,11 +1,11 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import Student from "./models/student.js";
+import Student from "./models/student.js"; //importing student model
 
-const app = express();
+const app = express(); //create express app
 
-app.use(bodyParser.json());
+app.use(bodyParser.json()); //to parse json data
 
 mongoose
   .connect(

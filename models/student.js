@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"; //importing mongoose
 //student schema
 const studentSchema = new mongoose.Schema({
   name: String,
@@ -10,4 +10,4 @@ const studentSchema = new mongoose.Schema({
 //create student model
 const Student = mongoose.model("students", studentSchema); //to connect to student collection
 
-export default Student;
+export default Student; //exporting student model
