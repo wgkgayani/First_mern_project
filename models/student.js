@@ -1,5 +1,5 @@
 import mongoose from "mongoose"; //importing mongoose
-//student schema
+//student schema (sructur of student)
 const studentSchema = new mongoose.Schema({
   name: String,
   age: Number,

@@ -3,7 +3,7 @@ import { getStudents, saveStudent } from "../controllers/studentController.js";
 
 const studentRouter = express.Router(); //create studentRouter using express router
 
-studentRouter.get("/", getStudents);
+studentRouter.get("/", getStudents); //route to get all students
 
 studentRouter.post("/", saveStudent);
 
