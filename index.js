@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 
 import studentRouter from "./routes/studentRouter.js";
 import productRouter from "./routes/productRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 const app = express(); //create express app
 
@@ -26,6 +27,7 @@ mongoose
 //
 app.use("/students", studentRouter);
 app.use("/products", productRouter);
+app.use("/users", userRouter);
 //
 //
 //

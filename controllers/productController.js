@@ -7,7 +7,7 @@ export function getProducts(req, res) {
 export function saveProduct(req, res) {
   console.log(req.body);
 
-  const product = new Product({
+  const product = new product({
     name: req.body.name,
     price: req.body.age,
     description: req.body.marks,
