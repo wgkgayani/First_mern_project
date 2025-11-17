@@ -36,4 +36,4 @@ const userSchema = mongoose.Schema({
 });
 
 const User = mongoose.model("users", userSchema); // to connect to users collection
-export default User;
+export default User; //that User go to the cotroler
