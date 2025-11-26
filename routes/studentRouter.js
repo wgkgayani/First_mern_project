@@ -5,6 +5,6 @@ const studentRouter = express.Router(); //create studentRouter using express rou
 
 studentRouter.get("/", getStudents); //route to get all students
 
-studentRouter.post("/", saveStudent);
+studentRouter.post("/", saveStudent); //route to save a student
 
 export default studentRouter; //exporting studentRouter to use in other files

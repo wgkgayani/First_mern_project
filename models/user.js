@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"; // mongoose is use to create schema and model
 
 const userSchema = mongoose.Schema({
+  // use to create schema (structure) for user collection
   email: {
     type: String,
     require: true, // require must include for every thing to enter schema

@@ -1,4 +1,4 @@
-import User from "../models/user.js";
+import User from "../models/user.js"; //use to import User model
 import bcrypt from "bcrypt"; //bcrypt use karanne password hash karanna
 
 export function createUser(req, res) {
@@ -13,7 +13,7 @@ export function createUser(req, res) {
     role: req.body.role,
   });
 
-  user
+  user // use to save or not user data to database
     .save()
     .then(() => {
       res.json({

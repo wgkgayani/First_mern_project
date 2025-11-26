@@ -1,5 +1,5 @@
 import express from "express";
-import bodyParser from "body-parser";
+import bodyParser from "body-parser"; // body-parser use to parse json data (to create data well structur)
 import mongoose from "mongoose";
 
 import studentRouter from "./routes/studentRouter.js";
@@ -24,7 +24,7 @@ mongoose
 
 //
 //
-//
+// use routes
 app.use("/students", studentRouter);
 app.use("/products", productRouter);
 app.use("/users", userRouter);
