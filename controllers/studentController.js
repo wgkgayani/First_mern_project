@@ -1,7 +1,7 @@
 import Student from "../models/student.js";
 
 export function getStudents(req, res) {
-  Student.find().then((data) => res.status(200).json(data));
+  Student.find().then((data) => res.status(200).json(data)); // show status code (200 is successful)
 }
 
 export function saveStudent(req, res) {

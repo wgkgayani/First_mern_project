@@ -26,3 +26,27 @@ export function createUser(req, res) {
       });
     });
 }
+
+export function loginUser(req, res) {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  User.function({ email: email }).then((user) => {
+    if (user == null) {
+      res.status(404).json({
+        massege: "User not found",
+      });
+    } else {
+      const isPasswordCorrect = bcrypt.compareSync(password, user.password);
+      if (isPasswordCorrect) {
+        res.json({
+          message: "login successful",
+        });
+      } else {
+        res.status(401).json({
+          message: "Invalid password",
+        });
+      }
+    }
+  });
+}
