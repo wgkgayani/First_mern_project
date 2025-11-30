@@ -31,7 +31,9 @@ export function loginUser(req, res) {
   const email = req.body.email;
   const password = req.body.password;
 
-  User.function({ email: email }).then((user) => {
+  User.findOne({ email: email }).then((user) => {
+    // console.log(user);
+
     if (user == null) {
       res.status(404).json({
         massege: "User not found",
@@ -41,6 +43,7 @@ export function loginUser(req, res) {
       if (isPasswordCorrect) {
         res.json({
           message: "login successful",
+          user: user,
         });
       } else {
         res.status(401).json({
