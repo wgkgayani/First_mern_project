@@ -1,5 +1,6 @@
 import User from "../models/user.js"; //use to import User model
 import bcrypt from "bcrypt"; //bcrypt use karanne password hash karanna
+import jwt from "jsonwebtoken";
 
 export function createUser(req, res) {
   const hashedPassword = bcrypt.hashSync(req.body.password, 10); //hash karanna password eka 10 times
@@ -41,9 +42,22 @@ export function loginUser(req, res) {
     } else {
       const isPasswordCorrect = bcrypt.compareSync(password, user.password);
       if (isPasswordCorrect) {
+        // generate token and sed it to user
+        const token = jwt.sign(
+          {
+            email: user.email,
+            role: user.role,
+            firstName: user.firstName,
+            lasttName: user.lasttName,
+            img: user.img,
+          },
+          "first.mern.course.encript.password"
+        );
+
         res.json({
           message: "login successful",
-          user: user,
+          //user: user,               show user details in db
+          token: token,
         });
       } else {
         res.status(401).json({
