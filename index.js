@@ -5,10 +5,29 @@ import mongoose from "mongoose";
 import studentRouter from "./routes/studentRouter.js";
 import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
+import jwt, { decode } from "jsonwebtoken";
 
 const app = express(); //create express app
 
 app.use(bodyParser.json()); //to parse json data
+
+app.use((req, res, next) => {
+  const tokenString = req.header("Authorization");
+  if (tokenString != null) {
+    const token = tokenString.replace("Bearer ", "");
+    console.log(token);
+
+    jwt.verify(token, "first.mern.course.encript.password", (err, decode) => {
+      if (decode != null) {
+        console.log(decode);
+      } else {
+        console.log("invalid token");
+      }
+    });
+  }
+
+  //next();
+});
 
 mongoose
   .connect(

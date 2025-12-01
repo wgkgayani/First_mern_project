@@ -1,16 +1,16 @@
-import product from "../models/product.js";
+import Product from "../models/product.js";
 
 export function getProducts(req, res) {
-  product.find().then((data) => res.json(data));
+  Product.find().then((data) => res.json(data));
 }
 
 export function saveProduct(req, res) {
   console.log(req.body);
 
-  const product = new product({
+  const product = new Product({
     name: req.body.name,
-    price: req.body.age,
-    description: req.body.marks,
+    price: req.body.price,
+    description: req.body.description,
   });
 
   product //to save student data in mongodb

@@ -6,6 +6,6 @@ const productSchema = mongoose.Schema({
   description: String,
 });
 
-const product = mongoose.model("products", productSchema); // "products" is name of collection, when automaticaly create in the db.therefor it is not product, it is products
+const Product = mongoose.model("products", productSchema); // "products" is name of collection, when automaticaly create in the db.therefor it is not product, it is products
 
-export default product;
+export default Product;
