@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from "body-parser"; // body-parser use to parse json data (to create data well structur)
-import mongoose from "mongoose";
+import mongoose from "mongoose"; //import mongoose to connect mongodb
 
 import studentRouter from "./routes/studentRouter.js";
 import productRouter from "./routes/productRouter.js";
@@ -27,12 +27,13 @@ app.use((req, res, next) => {
       } else {
         console.log("invalid token");
         res.status(403).json({
+          // 403 means forbidden
           message: "Invalid token",
         });
       }
     });
   } else {
-    next();
+    next(); //if no token found just go to next middleware
   }
 
   //next();

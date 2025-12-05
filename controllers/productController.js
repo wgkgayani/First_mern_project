@@ -7,16 +7,18 @@ export function getProducts(req, res) {
 export function saveProduct(req, res) {
   if (req.user == null) {
     res.status(403).json({
-      message: "Unauthorized",
+      // 403 means forbidden
+      message: "Unauthorized", // you need to be logged in
     });
     return;
   }
 
   if (req.user.role != "admin") {
+    // only admin can add products
     res.status(403).json({
-      message: "Unauthorized you need to be an admin",
+      message: "Unauthorized you need to be an admin", // you need to be admin
     });
-    return;
+    return; // stop further execution
   }
 
   console.log(req.body);
