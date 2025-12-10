@@ -2,7 +2,6 @@ import express from "express";
 import bodyParser from "body-parser"; // body-parser use to parse json data (to create data well structur)
 import mongoose from "mongoose"; //import mongoose to connect mongodb
 
-import studentRouter from "./routes/studentRouter.js";
 import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
 import jwt from "jsonwebtoken"; //import jwt from "jsonwebtoken";
@@ -54,7 +53,7 @@ mongoose
 //
 //
 // use routes
-app.use("/students", studentRouter);
+
 app.use("/products", productRouter);
 app.use("/users", userRouter);
 //

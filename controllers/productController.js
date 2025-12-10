@@ -1,6 +1,7 @@
 import Product from "../models/product.js";
 
 export async function getProducts(req, res) {
+  // use async funtion
   /* Product.find()
     .then((data) => {
       res.json(data);
@@ -48,7 +49,7 @@ export function saveProduct(req, res) {
     description: req.body.description,
   });
 
-  product //to save student data in mongodb
+  product //to save product data in mongodb
     .save()
     .then(() => {
       res.json({
