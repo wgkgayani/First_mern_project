@@ -1,4 +1,5 @@
 import Product from "../models/product.js";
+import { isAdmin } from "./userController.js";
 
 export async function getProducts(req, res) {
   // use async funtion
@@ -25,7 +26,7 @@ export async function getProducts(req, res) {
 }
 
 export function saveProduct(req, res) {
-  if (req.user == null) {
+  /* if (req.user == null) { 
     res.status(403).json({
       // 403 means forbidden
       message: "Unauthorized", // you need to be logged in
@@ -39,15 +40,18 @@ export function saveProduct(req, res) {
       message: "Unauthorized you need to be an admin", // you need to be admin
     });
     return; // stop further execution
+  }*/
+
+  //console.log(req.body);
+
+  if (isAdmin(req)) {
+    res.status(403).json({
+      message: "You are not authorized to add a product",
+    });
+    return;
   }
 
-  console.log(req.body);
-
-  const product = new Product({
-    name: req.body.name,
-    price: req.body.price,
-    description: req.body.description,
-  });
+  const product = new Product(req.body);
 
   product //to save product data in mongodb
     .save()
