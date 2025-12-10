@@ -3,6 +3,25 @@ import bcrypt from "bcrypt"; //bcrypt use karanne password hash karanna
 import jwt from "jsonwebtoken";
 
 export function createUser(req, res) {
+  if (req.body.role == "admin") {
+    //when user create account, first check user is admin or not
+    if (req.user != null) {
+      if (req.User.role != "admin") {
+        //
+        res.status(403).json({
+          massege: "Your are not authorized to create an admin account",
+        });
+        return; //stop below codes
+      }
+    } else {
+      res.status(403).json({
+        massege:
+          "You are not authorized to create an admin accounts. Please login first",
+      });
+      return; //stop below codes
+    }
+  }
+
   const hashedPassword = bcrypt.hashSync(req.body.password, 10); //hash karanna password eka 10 times
 
   const user = new User({
