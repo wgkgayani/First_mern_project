@@ -44,7 +44,7 @@ export function saveProduct(req, res) {
 
   //console.log(req.body);
 
-  if (isAdmin(req)) {
+  if (!isAdmin(req)) {
     res.status(403).json({
       message: "You are not authorized to add a product",
     });

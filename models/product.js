@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  ProductName: {
+  name: {
     type: String,
     required: true,
   },
