@@ -11,6 +11,6 @@ productRouter.get("/", getProducts); //route to get all product
 
 productRouter.post("/", saveProduct); //route to save a product
 
-productRouter.delete("/", deleteProduct);
+productRouter.delete("/:productId", deleteProduct);
 
 export default productRouter; //exporting productRouter to use in other files
