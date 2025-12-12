@@ -14,9 +14,15 @@ export async function getProducts(req, res) {
       });
     });*/
   // it equal below try catch
+
   try {
-    const products = await Product.find();
-    res.json(products); //products is db name
+    if (isAdmin(req)) {
+      const products = await Product.find();
+      res.json(products); //products is db name
+    } else {
+      const products = await Product.find({ isAvailable: true });
+      res.json(products);
+    }
   } catch (err) {
     res.json({
       message: "Failed to get products",

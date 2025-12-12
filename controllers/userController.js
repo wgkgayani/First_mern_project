@@ -7,7 +7,6 @@ export function createUser(req, res) {
     //when user create account, first check user is admin or not
     if (req.user != null) {
       if (req.User.role != "admin") {
-        //
         res.status(403).json({
           massege: "Your are not authorized to create an admin account",
         });
