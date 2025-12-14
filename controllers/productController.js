@@ -121,7 +121,7 @@ export async function updateProduct(req, res) {
   }
 }
 
-/*export async function getProductById(req, res) {
+export async function getProductById(req, res) {
   const productId = req.params.productId;
 
   try {
@@ -152,4 +152,4 @@ export async function updateProduct(req, res) {
       error: err,
     });
   }
-}*/
+}

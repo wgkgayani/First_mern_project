@@ -1,7 +1,7 @@
 import express from "express"; //importing express module`
 import {
   deleteProduct,
-  /*getProductById,*/
+  getProductById,
   getProducts,
   saveProduct,
   updateProduct,
@@ -17,6 +17,6 @@ productRouter.delete("/:productId", deleteProduct); //delete product  (productId
 
 productRouter.put("/:productId", updateProduct); //update product
 
-/*productRouter.get("/:productId", getProductById); //get one product*/
+productRouter.get("/:productId", getProductById); //get one product
 
 export default productRouter; //exporting productRouter to use in other files
