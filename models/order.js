@@ -69,7 +69,6 @@ const orderSchema = mongoose.Schema({
   ],
   date: {
     tyoe: Date,
-    default: Date,
-    now,
+    default: Date.now,
   },
 });
