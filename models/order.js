@@ -2,33 +2,33 @@ import mongoose, { Types } from "mongoose";
 
 const orderSchema = mongoose.Schema({
   orderId: {
-    Type: String,
+    type: String,
     required: true,
     unique: true,
   },
   email: {
-    Type: String,
+    type: String,
     required: true,
   },
   name: {
-    Type: String,
+    type: String,
     required: true,
   },
   phone: {
-    Type: String,
+    type: String,
     required: true,
   },
   address: {
-    Type: String,
+    type: String,
     required: true,
   },
   status: {
-    Type: String,
+    type: String,
     required: true,
     default: "pending",
   },
-  totle: {
-    Type: Number,
+  total: {
+    type: Number,
     required: true,
   },
   products: [
@@ -47,7 +47,7 @@ const orderSchema = mongoose.Schema({
             type: String,
           },
         ],
-        destription: {
+        description: {
           type: String,
           required: true,
         },
@@ -68,7 +68,10 @@ const orderSchema = mongoose.Schema({
     },
   ],
   date: {
-    tyoe: Date,
+    type: Date,
     default: Date.now,
   },
 });
+
+const Order = mongoose.model("orders", orderSchema);
+export default Order;

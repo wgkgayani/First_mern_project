@@ -4,6 +4,7 @@ import mongoose from "mongoose"; //import mongoose to connect mongodb
 
 import productRouter from "./routes/productRouter.js";
 import userRouter from "./routes/userRouter.js";
+import orderRouter from "./routes/orderRouter.js";
 import jwt from "jsonwebtoken"; //import jwt from "jsonwebtoken";
 
 const app = express(); //create express app
@@ -56,6 +57,7 @@ mongoose
 
 app.use("/products", productRouter);
 app.use("/users", userRouter);
+app.use("/orders", orderRouter);
 //
 //
 //
